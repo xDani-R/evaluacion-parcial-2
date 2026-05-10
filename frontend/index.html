@@ -9,7 +9,7 @@
 
     <script>
         // Aquí pondrás la IP de tu EC2 después
-        fetch('http://localhost:3000') 
+        fetch('http://54.224.5.158:3000') 
             .then(response => response.json())
             .then(data => {
                 document.getElementById('status').innerText = data.message;
