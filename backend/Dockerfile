@@ -7,6 +7,10 @@ COPY server.js .
 FROM node:18-alpine
 WORKDIR /app
 
+# Crear usuario para no usar root
+RUN addgroup -S duocgroup && adduser -S duocuser -G duocgroup
+USER duocuser
+
 # IMPORTANTE: Aquí debe decir 'builder' igual que arriba
 COPY --from=builder /app/server.js .
 
