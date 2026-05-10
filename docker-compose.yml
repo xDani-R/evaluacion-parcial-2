@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - backend_data:/app/data # IE2: Persistencia mediante Named Volume
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_PASSWORD: duoc_password
+    volumes:
+      - db_logs:/var/lib/postgresql/data # IE2: Persistencia de base de datos
+
+volumes:
+  backend_data: # Definición de volúmenes
+  db_logs:
